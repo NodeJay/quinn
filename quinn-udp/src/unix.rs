@@ -157,7 +157,7 @@ impl UdpSocketState {
     }
 
     pub fn send(&self, socket: UdpSockRef<'_>, transmits: &[Transmit]) -> io::Result<usize> {
-        println!("Custom backtrace SEND: {}", Backtrace::capture());
+        //println!("Custom backtrace SEND: {}", Backtrace::capture());
         println!("SEND PACKET TTT1:");
         send(self, socket.0, transmits)
     }
@@ -168,7 +168,7 @@ impl UdpSocketState {
         bufs: &mut [IoSliceMut<'_>],
         meta: &mut [RecvMeta],
     ) -> io::Result<usize> {
-        println!("Custom backtrace REC: {}", Backtrace::capture());
+       // println!("Custom backtrace REC: {}", Backtrace::capture());
         println!("REC PACKET TTT1:");
         recv(socket.0, bufs, meta)
     }

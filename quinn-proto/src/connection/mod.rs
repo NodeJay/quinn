@@ -1944,6 +1944,7 @@ impl Connection {
 
     fn write_crypto(&mut self) {
         loop {
+            print!("WRITING CryPTO");
             let space = self.highest_space;
             let mut outgoing = Vec::new();
             if let Some(crypto) = self.crypto.write_handshake(&mut outgoing) {
@@ -1987,7 +1988,8 @@ impl Connection {
             self.spaces[space].crypto.is_none(),
             "already reached packet space {space:?}"
         );
-        trace!("{:?} keys ready", space);
+        print!("UPGRADE CryPTO");
+        print!("{:?} keys ready", space);
         if space == SpaceId::Data {
             // Precompute the first key update
             self.next_crypto = Some(
